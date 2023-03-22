@@ -10,6 +10,24 @@ use Session;
 
 class CustomAuthController extends Controller
 {
+    public function index()
+    {
+        return view('auth.login');
+    }
+    public function custom_login(Request $request)
+    {
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required'
+        ]);
+
+        $credential = $request->only('email','password');
+        if(Auth::attempt($credential)){
+            return redirect()->intended('dashboard')->withSuccess('Login');
+        }else{
+            return redirect('login')->with('error', 'Invalid login details');
+        }
+    }
     public function registration(){
         return view('auth.registration');
     }
@@ -28,5 +46,18 @@ class CustomAuthController extends Controller
             'type' => 'Admin'
         ]);
         return redirect('registration')->with('success', 'Registration complete');
+    }
+    public function dashboard()
+    {
+        if(Auth::check()){
+            return view('dashboard');
+        }
+        return view('auth.login');
+    }
+    public function logout()
+    {
+       Session::flush();
+       Auth::logout();
+       return redirect('login');
     }
 }
