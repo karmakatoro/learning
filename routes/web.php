@@ -20,3 +20,6 @@ Route::get('/', function () {
 
 Route::get('registration', [CustomAuthController::class, 'registration'])
 ->name('register');
+
+Route::post('custom-registration',[CustomAuthController::class, 'custom_registration'])
+->name('register.custom');
