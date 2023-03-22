@@ -24,14 +24,23 @@
                     </div>
                  </div>
             </header>
-
             <div class="container-fluid">
                 <div class="row">
                     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
                         <div class="position-sticky pt-3">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a href="{{ route('logout') }}" class="navlink">
+                                    <a href="/dashboard" class="nav-link {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}">
+                                        Dashboard
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/profile" class="nav-link">
+                                        Profile
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('logout') }}" class="nav-link">
                                         Logout
                                     </a>
                                 </li>
