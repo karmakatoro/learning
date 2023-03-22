@@ -1,6 +1,7 @@
 @extends('dashboard')
 
 @section('content')
+<h1 class="mt-4 mb-5 text-center">Visitor Management System</h1>
 <main class="signup-form">
     <div class="container">
         <div class="row justify-content-center">
@@ -39,6 +40,10 @@
                                 <button type="submit" class="btn btn-dark btn-block">Sign Up</button>
                             </div>
                         </form>
+
+                        <div class="text-center mt-3">
+                            <p>Already have an account? <a href="{{ route('login') }}">Login</a></p>
+                        </div>
 
                     </div>
                 </div>
